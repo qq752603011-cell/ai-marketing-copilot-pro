@@ -1,75 +1,52 @@
-# 🚀 AI Marketing Copilot
+# 🚀 AI Marketing Copilot V3
 
 企业级 AI 营销内容生成平台
 
-基于 Python + Streamlit + DeepSeek API 开发，帮助电商运营快速生成营销内容，提高内容创作效率。
+基于 Python + Streamlit + DeepSeek API 开发，输入产品信息后一键生成全套营销内容，自动同步飞书多维表格，支持 AI 小红书封面图生成。
 
 ---
 
 ## ✨ 项目功能
 
-### 商品标题生成
-自动生成高转化率商品标题
+### 营销内容一键生成
+输入产品名称、特点、目标客户，自动生成：
+- 商品标题（3条，含关键词）
+- 封面标题（5条，强冲击力）
+- 核心卖点（5条）
+- 小红书图文文案（800字，含 emoji）
+- 短视频口播稿（适合 30-60 秒）
+- 亚马逊 Bullet Point（英文，5条）
 
-### 核心卖点提炼
-自动提炼产品核心竞争优势
+### AI 小红书封面图生成
+- 5 种场景模板：产品平铺 / 生活场景 / 简约纯色 / 户外场景 / 礼盒展示
+- 支持自定义提示词
+- 基于硅基流动图像生成 API（Kolors / SDXL）
 
-### 小红书营销文案
-生成种草风格内容
+### 自动同步飞书多维表格
+- 各字段分列写入（商品标题、文案、卖点等独立保存）
+- 产品图片和 AI 封面图自动上传为附件
 
-### 短视频口播稿
-生成30秒短视频脚本
+### 批量模式
+- 上传 CSV 文件，批量生成多个产品的营销内容
+- 一键导出 Excel（每行一个产品，各字段分列）
 
-### 亚马逊 Bullet Point
-生成符合亚马逊规范的卖点文案
-
-### AI模型切换
-支持：
-
-- DeepSeek Chat
-- DeepSeek Reasoner
-
-### 文件导出
-
-支持导出：
-
+### 多格式导出
 - Word (.docx)
-- PDF (.pdf)
-- Markdown (.md)
-
-### Token统计
-
-实时显示：
-
-- 输入Token
-- 输出Token
-- 总Token
+- Excel (.xlsx)
 
 ---
 
 ## 🛠 技术栈
 
-### 前端
-
-- Streamlit
-
-### 后端
-
-- Python
-
-### AI模型
-
-- DeepSeek API
-
-### 文件处理
-
-- python-docx
-- ReportLab
-
-### 版本管理
-
-- Git
-- GitHub
+| 模块 | 技术 |
+|------|------|
+| 前端 | Streamlit |
+| 后端 | Python 3 |
+| 文案生成 | DeepSeek API（deepseek-chat / deepseek-reasoner）|
+| 图像生成 | 硅基流动 API（Kwai-Kolors/Kolors、SDXL）|
+| 数据库 | 飞书多维表格（Bitable API）|
+| 文件处理 | python-docx、openpyxl |
+| 版本管理 | Git + GitHub |
 
 ---
 
@@ -81,50 +58,56 @@
 
 ## 🚀 本地运行
 
-安装依赖：
+**安装依赖：**
 
-bash pip install -r requirements.txt 
+```bash
+pip install -r requirements.txt
+```
 
-启动项目：
+**启动项目：**
 
-bash streamlit run app.py 
+```bash
+streamlit run app.py
+```
 
 ---
 
 ## 🔑 环境变量
 
-创建：
+创建 `.streamlit/secrets.toml`：
 
-text .streamlit/secrets.toml 
+```toml
+DEEPSEEK_API_KEY = "your_deepseek_api_key"
+SILICONFLOW_API_KEY = "your_siliconflow_api_key"
+FEISHU_APP_ID = "your_feishu_app_id"
+FEISHU_APP_SECRET = "your_feishu_app_secret"
+BASE_ID = "your_bitable_base_id"
+TABLE_ID = "your_bitable_table_id"
+```
 
-内容：
-
-toml DEEPSEEK_API_KEY="your_api_key" 
-
----
-
-## 📈 项目版本
-
-### V1
-
-AI Prompt Studio
-
-### V3
-
-接入 DeepSeek API
-
-### V5
-
-Word/PDF/Markdown 导出
-
-### V6
-
-AI Marketing Copilot 企业版
+> ⚠️ 请确保 `.streamlit/secrets.toml` 已加入 `.gitignore`，不要上传到 GitHub。
 
 ---
 
-## 👨‍💻 作者
+## 🗂 飞书表格字段配置
 
-艾小小
+飞书多维表格需包含以下字段：
 
-独立开发 AI 应用项
+| 字段名 | 类型 |
+|--------|------|
+| 商品标题 | 文本 |
+| 封面标题 | 文本 |
+| 核心卖点 | 文本 |
+| 小红书文案 | 文本 |
+| 短视频口播稿 | 文本 |
+| 亚马逊卖点 | 文本 |
+| 产品图片 | 附件 |
+| 小红书封面 | 附件 |
+
+---
+
+## 👩‍💻 作者
+
+**阿晓AI**
+
+独立开发 AI 应用，专注跨境电商 + AI 工具方向。
